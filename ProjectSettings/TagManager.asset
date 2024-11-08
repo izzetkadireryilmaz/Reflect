@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags:
+  - "\xDC\xE7gen"
+  - AltKenar
+  - "Sa\u011FKenar"
+  - SolKenar
+  - KareAltKenar
+  - "Kare\xDCstKenar"
+  - "KareSa\u011FKenar"
+  - KareSolKenar
+  - "\xC7ubukSolKenar"
+  - "\xC7ubukSa\u011FKenar"
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  m_RenderingLayers:
+  - Default
