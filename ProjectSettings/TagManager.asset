@@ -14,6 +14,7 @@ TagManager:
   - KareSolKenar
   - "\xC7ubukSolKenar"
   - "\xC7ubukSa\u011FKenar"
+  - Border
   layers:
   - Default
   - TransparentFX

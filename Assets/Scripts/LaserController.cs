@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class LaserController : MonoBehaviour
 {
+    
     public float speed = 5f;
     public Vector3 direction;
     public Transform saðKenar;
@@ -16,9 +17,9 @@ public class LaserController : MonoBehaviour
     public Transform çubukSolKenar;
     public float daraltmaAçýsý = 15f;
 
-    void Start()
+    public void Play()
     {
-        direction = transform.up; // Lazerin baþlangýçta yukarý doðru ilerlemesini saðlýyoruz.
+        direction = transform.up;
     }
 
     void Update()
@@ -87,8 +88,10 @@ public class LaserController : MonoBehaviour
             StartCoroutine(KenarDevreDisiBirak(çubukSolKenar.gameObject));
             StartCoroutine(KenarDevreDisiBirak(çubukSaðKenar.gameObject));
         }
-
-
+        else if (other.CompareTag("Border"))
+        {
+            Debug.Log("asd");
+        }
         // Çýkýþ açýsýný kýsmi olarak deðiþtiriyoruz.
         if (exitPosition != Vector3.zero)
         {

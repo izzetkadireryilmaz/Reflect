@@ -9,7 +9,6 @@ public class MirrorDrag : MonoBehaviour
     {
         cam = Camera.main;
     }
-
     void OnMouseDown()
     {
         // Fare ile objeye týklanýnca, fare pozisyonu ile obje arasýndaki farký hesaplar
@@ -22,4 +21,5 @@ public class MirrorDrag : MonoBehaviour
         Vector3 newPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.nearClipPlane);
         transform.position = cam.ScreenToWorldPoint(newPosition) + offset;
     }
+
 }
