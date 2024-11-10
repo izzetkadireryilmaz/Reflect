@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ButtonController : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class ButtonController : MonoBehaviour
     public GameObject triangle;
     public GameObject square;
     public GameObject stick;
+    public Canvas DeathCanvas;
     public float rotationSpeed = 45f;
     private bool TriangleRotate = false;
     private bool SquareRotate = false;
@@ -67,5 +69,19 @@ public class ButtonController : MonoBehaviour
     public void StopStickRotation()
     {
         StickRotate = false;
+    }
+
+    public void Home()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public void Retry()
+    {
+        DeathCanvas.gameObject.SetActive(false);
+        SceneManager.LoadScene(1);
+    }
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

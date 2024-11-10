@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class LaserController : MonoBehaviour
 {
-    
+    public Canvas deathCanvas;
     public float speed = 5f;
+    public float rotationSpeed;
     public Vector3 direction;
     public Transform saðKenar;
     public Transform solKenar;
@@ -24,6 +25,7 @@ public class LaserController : MonoBehaviour
 
     void Update()
     {
+        transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
         transform.position += direction * speed * Time.deltaTime; // Lazerin hareketini saðlýyoruz.
     }
 
@@ -90,7 +92,7 @@ public class LaserController : MonoBehaviour
         }
         else if (other.CompareTag("Border"))
         {
-            Debug.Log("asd");
+            deathCanvas.gameObject.SetActive(true);
         }
         // Çýkýþ açýsýný kýsmi olarak deðiþtiriyoruz.
         if (exitPosition != Vector3.zero)
