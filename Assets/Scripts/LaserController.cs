@@ -1,28 +1,34 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LaserController : MonoBehaviour
 {
-    public Canvas deathCanvas;
-    public float speed = 5f;
-    public float rotationSpeed;
+    public Canvas deathCanvas, gameCanvas;
+    public float speed = 5f, rotationSpeed, daraltmaAçısı = 15f;
     public Vector3 direction;
-    public Transform sağKenar;
-    public Transform solKenar;
-    public Transform altKenar;
-    public Transform kareAltKenar;
-    public Transform kareÜstKenar;
-    public Transform kareSağKenar;
-    public Transform kareSolKenar;
-    public Transform çubukSağKenar;
-    public Transform çubukSolKenar;
-    public float daraltmaAçısı = 15f;
+    public Transform sağKenar, solKenar, altKenar, kareAltKenar, kareÜstKenar, kareSağKenar, kareSolKenar, çubukSağKenar, çubukSolKenar;
+    public static bool canvasBool = false;
+    public GameObject star1, star2, star3, star4, star5, star6, star7, star8, star9, star10, star11, star12, star13, star14, star15;
 
-    public void Play()
+    private void Start()
     {
-        direction = transform.up;
+        ActivateStar(ref MenuManager.level1b, star1);
+        ActivateStar(ref MenuManager.level2b, star2);
+        ActivateStar(ref MenuManager.level3b, star3);
+        ActivateStar(ref MenuManager.level4b, star4);
+        ActivateStar(ref MenuManager.level5b, star5);
+        ActivateStar(ref MenuManager.level6b, star6);
+        ActivateStar(ref MenuManager.level7b, star7);
+        ActivateStar(ref MenuManager.level8b, star8);
+        ActivateStar(ref MenuManager.level9b, star9);
+        ActivateStar(ref MenuManager.level10b, star10);
+        ActivateStar(ref MenuManager.level11b, star11);
+        ActivateStar(ref MenuManager.level12b, star12);
+        ActivateStar(ref MenuManager.level13b, star13);
+        ActivateStar(ref MenuManager.level14b, star14);
+        ActivateStar(ref MenuManager.level15b, star15);
     }
-
     void Update()
     {
         transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
@@ -94,6 +100,24 @@ public class LaserController : MonoBehaviour
         {
             deathCanvas.gameObject.SetActive(true);
         }
+        else if (other.CompareTag("Level1_Star"))
+        {
+            int currentLevel = PlayerPrefs.GetInt("CurrentLevel", 0);
+            currentLevel += 1;
+            PlayerPrefs.SetInt("CurrentLevel", currentLevel);
+
+            for (int i = 2; i <= 15; i++)
+            {
+                if (PlayerPrefs.GetInt("CurrentLevel") <= i - 1)
+                {
+                    PlayerPrefs.SetInt("Level" + i, 1);
+                    Debug.Log(i);
+                    break;
+                }
+            }
+            canvasBool = true;
+            SceneManager.LoadScene(0);
+        }
         // Çıkış açısını kısmi olarak değiştiriyoruz.
         if (exitPosition != Vector3.zero)
         {
@@ -115,5 +139,19 @@ public class LaserController : MonoBehaviour
         kenar.SetActive(false);
         yield return new WaitForSeconds(1f);
         kenar.SetActive(true);
+    }
+
+    public void Play()
+    {
+        direction = transform.up;
+        gameCanvas.gameObject.SetActive(false);
+    }
+
+    void ActivateStar(ref bool levelCheck, GameObject star)
+    {
+        if (levelCheck)
+        {
+            star.SetActive(true);
+        }
     }
 }
